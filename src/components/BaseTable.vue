@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { IUser } from "@/types/user";
+import TableCell from "./TableCell.vue";
 type UserField = keyof IUser
 interface Props {
   headers: UserField[],
@@ -22,7 +23,7 @@ defineProps<Props>()
                     </thead>
                     <tbody class="table-tbody">
                         <tr v-for="user in dataProvider" :key="user.id">
-                            <td v-for="h in headers" :key="h" class="sort-name">{{ user[h] }}</td>
+                            <td v-for="h in headers" :key="h" class="sort-name"><TableCell :value="user[h]" /></td>
                         </tr>
                        
                     </tbody>
